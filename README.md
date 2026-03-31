@@ -15,6 +15,7 @@ It is a productivity utility designed to help manage executive dysfunction  by u
 I deepened my understanding of **File I/O** by implementing a CRUD (Create, Read, Update, Delete) system. I practiced **Memory Management** by using `realloc` for dynamic weighted pools and prioritized **Memory Safety** by replacing `sprintf` with `snprintf`. I also learned how to handle **Linux Time Utilities** (`<time.h>`) to track dates and streaks across sessions.
 
 ### ⌨️  Usage:
+#### Linux/Ubuntu
 1. Clone the repository:
 ```bash
 git clone https://github.com/oxtknight/clitodo.git
@@ -24,6 +25,33 @@ cd clitodo
 ```bash
 sudo make install
 ``` 
+#### Windows
+1. **Install a C Compiler:**
+   Open PowerShell as **Administrator** and run this to install Chocolatey (package manager), then MinGW (the compiler):
+   ```powershell
+   Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
+   # Restart PowerShell, then run:
+   choco install mingw -y
+   ```
+
+2. **Clone and Compile:**
+   ```powershell
+   git clone https://github.com/oxtknight/clitodo.git
+   cd clitodo
+   gcc source.code/clitodo.c -o clitodo.exe
+   ```
+
+3. **Make it a Global Command:**
+   Create a folder for your binaries and add it to your System PATH so you can type `clitodo` anywhere:
+   ```powershell
+   mkdir C:\bin -Force
+   move clitodo.exe C:\bin\
+   $oldPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
+   [System.Environment]::SetEnvironmentVariable("Path", "$oldPath;C:\bin", "User")
+   ```
+   *Restart your terminal, and you are ready to lock in!*
+```
+
 3. Commands:
  ```bash
 clitodo add "Finish reviewing active" --quick

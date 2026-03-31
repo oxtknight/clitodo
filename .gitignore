@@ -1,2 +1,8 @@
 clitodo
-*.txt
+clitodo.exe
+temp.txt
+todo.txt
+lastpick.txt
+streak.txt
+dump.txt
+.clitodo/
