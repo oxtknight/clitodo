@@ -15,6 +15,14 @@ It is a productivity utility designed to help manage executive dysfunction  by u
 I deepened my understanding of **File I/O** by implementing a CRUD (Create, Read, Update, Delete) system. I practiced **Memory Management** by using `realloc` for dynamic weighted pools and prioritized **Memory Safety** by replacing `sprintf` with `snprintf`. I also learned how to handle **Linux Time Utilities** (`<time.h>`) to track dates and streaks across sessions.
 
 ### ⌨️  Usage:
+#### Manual
+you can access the manual by using both commands:
+```
+clitodo --help
+# or
+clitodo help
+```
+#### Installation 
 #### Linux/Ubuntu
 1. Clone the repository:
 ```
