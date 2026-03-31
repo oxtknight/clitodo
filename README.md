@@ -10,7 +10,7 @@ It is a productivity utility designed to help manage executive dysfunction  by u
 - **Thought Dump:** A quick-capture system (`dump`) to offload mental clutter and "loops" without leaving the flow of work.
 - **Gamified Streaks:** Persistent daily streak tracking to reward consistency.
 - **File-Based Persistence:** Atomic file updates using temporary buffers to ensure data safety.
-
+- **Cross-platform support:** you can use it from your linux machine (ubuntu), Windows and Android by using termux allowing you to carry your productive system in your pocket.
 ### 🧠 What I learnt? 
 I deepened my understanding of **File I/O** by implementing a CRUD (Create, Read, Update, Delete) system. I practiced **Memory Management** by using `realloc` for dynamic weighted pools and prioritized **Memory Safety** by replacing `sprintf` with `snprintf`. I also learned how to handle **Linux Time Utilities** (`<time.h>`) to track dates and streaks across sessions.
 
@@ -49,9 +49,8 @@ sudo make install
    $oldPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
    [System.Environment]::SetEnvironmentVariable("Path", "$oldPath;C:\bin", "User")
    ```
-   *Restart your terminal, and you are ready to lock in!*
+   *Restart your terminal, and you are ready to go!*
 ```
-
 3. Commands:
  ```bash
 clitodo add "Finish reviewing active" --quick
