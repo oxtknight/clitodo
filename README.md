@@ -4,6 +4,8 @@ A fast, lightweight, and neuro-inclusive CLI task manager written in C.
 It is a productivity utility designed to help manage executive dysfunction  by using visual salience, decision-support logic, and mental offloading.
 
 ![clitodo-preview](assets/clitodopreview.png) 
+![clitodo-windows](assets/clitodowindows.jpg)
+![clitodo-termux](assets/termuxpreview.jpg)
 ### ✨ features
 - **Weighted Random Pick:** ADHD-friendly logic that uses a weighted pool (3x weight for `--quick` tasks) to help overcome choice paralysis.
 - **Visual Salience:** High-contrast ANSI colors and "dimmed" completion states to improve focus and reduce "wall of text" blindness.
