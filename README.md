@@ -17,16 +17,16 @@ I deepened my understanding of **File I/O** by implementing a CRUD (Create, Read
 ### ⌨️  Usage:
 #### Linux/Ubuntu
 1. Clone the repository:
-```bash
+```
 git clone https://github.com/oxtknight/clitodo.git
 cd clitodo
 ```
 2. Install globally (Ubuntu/Linux):
-```bash
+```
 sudo make install
 ``` 
 #### Windows
-1. **Install a C Compiler:**
+1. Install a C Compiler:
    Open PowerShell as **Administrator** and run this to install Chocolatey (package manager), then MinGW (the compiler):
    ```powershell
    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
@@ -34,14 +34,14 @@ sudo make install
    choco install mingw -y
    ```
 
-2. **Clone and Compile:**
+2. Clone and Compile:
    ```powershell
    git clone https://github.com/oxtknight/clitodo.git
    cd clitodo
    gcc source.code/clitodo.c -o clitodo.exe
    ```
 
-3. **Make it a Global Command:**
+3. Make it a Global Command:
    Create a folder for your binaries and add it to your System PATH so you can type `clitodo` anywhere:
    ```powershell
    mkdir C:\bin -Force
@@ -50,9 +50,25 @@ sudo make install
    [System.Environment]::SetEnvironmentVariable("Path", "$oldPath;C:\bin", "User")
    ```
    *Restart your terminal, and you are ready to go!*
+#### Android (Termux) 
+1. Update and install dependencies:
 ```
-3. Commands:
- ```bash
+pkg update && pkg upgrade
+pkg install git clang make -y
+```
+2. Clone and Build:
+```
+git clone https://github.com/oxtknight/clitodo.git
+cd clitodo
+make
+```
+3. Install globally to your Termux path:
+```
+cp clitodo $PREFIX/bin/
+```
+
+##### Commands:
+ ```
 clitodo add "Finish reviewing active" --quick
 clitodo list
 clitodo pick   # Let the app choose your focus
