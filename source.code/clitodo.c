@@ -81,7 +81,7 @@ int main(int argc, char *argv[]){
    if (f != NULL){
       char line[600];
     while (fgets(line, sizeof(line), f) != NULL) {
-            int id, done,&tempquick;
+            int id, done,tempquick;
             char desc[500];
 
           sscanf(line, "%d|%d|%d|%[^\n]", &id, &done,&tempquick, desc);
