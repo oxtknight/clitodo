@@ -28,8 +28,9 @@ clitodo help
 #### Linux/Ubuntu
 1. Clone the repository:
 ```
-git clone https://github.com/oxtknight/clitodo.git
-cd clitodo
+mkdir -p ~/.clitodo/repo
+git clone https://github.com/oxtknight/clitodo.git ~/.clitodo/repo
+cd ~/.clitodo/repo
 ```
 2. Install globally (Ubuntu/Linux):
 ```
@@ -38,22 +39,23 @@ sudo make install
 #### Windows
 1. Install a C Compiler:
    Open PowerShell as **Administrator** and run this to install Chocolatey (package manager), then MinGW (the compiler):
-   ```powershell
+   ```
    Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
    # Restart PowerShell, then run:
    choco install mingw -y
    ```
 
 2. Clone and Compile:
-   ```powershell
-   git clone https://github.com/oxtknight/clitodo.git
-   cd clitodo
+   ``` 
+   mkdir "$HOME\.clitodo\repo -Force
+   git clone https://github.com/oxtknight/clitodo.git "$HOME\.clitodo\repo"
+   cd "$HOME\.clitodo\repo"
    gcc source.code/clitodo.c -o clitodo.exe
    ```
 
 3. Make it a Global Command:
    Create a folder for your binaries and add it to your System PATH so you can type `clitodo` anywhere:
-   ```powershell
+   ```
    mkdir C:\bin -Force
    move clitodo.exe C:\bin\
    $oldPath = [System.Environment]::GetEnvironmentVariable("Path", "User")
@@ -68,13 +70,23 @@ pkg install git clang make -y
 ```
 2. Clone and Build:
 ```
-git clone https://github.com/oxtknight/clitodo.git
-cd clitodo
+mkdir -p ~/.clitodo/repo
+git clone https://github.com/oxtknight/clitodo.git ~/.clitodo/repo
+cd ~/.clitodo/repo
 make
 ```
 3. Install globally to your Termux path:
 ```
 cp clitodo $PREFIX/bin/
+```
+#### Update 
+Clitodo is built to evolve and stay maintained.  
+first, pre-requisite for updates, the repository must be cloned into your config folder:  
+**Windows:** ``%USERPROFILE%\.clitodo\repo``  
+**Linux/Termux:** ``~/.clitodo/repo``  
+then use the command:
+```
+clitodo update
 ```
 
 ##### Commands:

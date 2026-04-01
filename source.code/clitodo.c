@@ -81,10 +81,10 @@ int main(int argc, char *argv[]){
    if (f != NULL){
       char line[600];
     while (fgets(line, sizeof(line), f) != NULL) {
-            int id, done;
+            int id, done,&tempquick;
             char desc[500];
 
-          sscanf(line, "%d|%d|%d|%[^\n]", &id, &done,&quick, desc);
+          sscanf(line, "%d|%d|%d|%[^\n]", &id, &done,&tempquick, desc);
           if (id>lastid) lastid = id;} //this so it can automatically update the id for each new task 
         fclose(f); }
   task.ID = lastid + 1;  
@@ -95,7 +95,8 @@ int main(int argc, char *argv[]){
         quick = 1;
         continue;
     }
-    strcat(task.description, argv[i]);
+    size_t remaining = sizeof(task.description) - strlen(task.description) - 1;
+    strncat(task.description, argv[i],remaining);
     if (i < argc - 1) strcat(task.description, " ");
 }
 FILE *ext = fopen(todo_file,"a");
@@ -328,6 +329,18 @@ else if(argc >= 3 && strcmp(argv[1],"dump") == 0){
     fprintf(dmp, "\n");
     fclose(dmp);
     printf(DIM"thoughts dumped successfully:>\n"RESET);
+}else if(argc == 2 && strcmp(argv[1],"update") == 0){
+printf(CYAN"Checking for updates...\n"RESET);
+#ifdef _WIN32
+char cmd[1024];
+snprintf(cmd,sizeof(cmd),"powershell -ExecutionPolicy Bypass -File %s/update.ps1", folder_path);
+system(cmd);
+#else
+char cmd[1024];
+snprintf(cmd, sizeof(cmd), "sh %s/update.sh",folder_path);
+system(cmd);
+#endif 
+return 0;
 }
 else {
     printf("unknown command\n");
