@@ -333,14 +333,28 @@ else if(argc >= 3 && strcmp(argv[1],"dump") == 0){
 printf(CYAN"Checking for updates...\n"RESET);
 #ifdef _WIN32
 char cmd[1024];
-snprintf(cmd,sizeof(cmd),"powershell -ExecutionPolicy Bypass -File %s/update.ps1", folder_path);
-system(cmd);
-#else
-char cmd[1024];
-snprintf(cmd, sizeof(cmd), "sh %s/update.sh",folder_path);
-system(cmd);
-#endif 
-return 0;
+  char script_path[1024];
+snprintf(script_path, sizeof(script_path), "%s/.clitodo/repo/update.ps1", home);
+if (access(script_path, 0) != 0) {
+   printf(RED"Error: update.ps1 not found at %s\n"RESET, script_path);
+            return 1;
+        }
+
+        char cmd[2048];
+        snprintf(cmd, sizeof(cmd), "powershell -ExecutionPolicy Bypass -File \"%s\"", script_path);
+        system(cmd);
+    #else
+          char script_path[1024];
+        snprintf(script_path, sizeof(script_path), "%s/.clitodo/repo/update.sh", home);
+        if (access(script_path, 0) != 0) {
+            printf(RED"Error: update.sh not found at %s\n"RESET, script_path);
+            return 1;
+        }
+        char cmd[2048];
+        snprintf(cmd, sizeof(cmd), "sh \"%s\"", script_path);
+        system(cmd);
+    #endif 
+    return 0;
 }
 else {
     printf("unknown command\n");
