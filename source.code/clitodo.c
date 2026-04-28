@@ -211,6 +211,7 @@ return 1;
 }
 char line[600];
 int found = 0;
+int currentnewid = 1;
 while(fgets(line,sizeof(line),rm) != NULL){
     int id,done,quick;
     char desc[500];
@@ -218,7 +219,7 @@ while(fgets(line,sizeof(line),rm) != NULL){
         if (id == targetid){
             found = 1;
             continue;}
-        fprintf(temp,"%d|%d|%d|%s\n",id,done,quick,desc);
+        fprintf(temp,"%d|%d|%d|%s\n",currentnewid++,done,quick,desc);
     }
 }
 fclose(rm);
@@ -340,9 +341,9 @@ if (access(script_path, 0) != 0) {
             return 1;
         }
 
-        char cmd[2048];
-        snprintf(cmd, sizeof(cmd), "powershell -ExecutionPolicy Bypass -File \"%s\"", script_path);
-        system(cmd);
+        char cmdblub[2048];
+        snprintf(cmdblub, sizeof(cmdblub), "powershell -ExecutionPolicy Bypass -File \"%s\"", script_path);
+        system(cmdblub);
     #else
           char script_path[1024];
         snprintf(script_path, sizeof(script_path), "%s/.clitodo/repo/update.sh", home);
@@ -350,9 +351,9 @@ if (access(script_path, 0) != 0) {
             printf(RED"Error: update.sh not found at %s\n"RESET, script_path);
             return 1;
         }
-        char cmd[2048];
-        snprintf(cmd, sizeof(cmd), "sh \"%s\"", script_path);
-        system(cmd);
+        char cmdblub[2048];
+        snprintf(cmdblub, sizeof(cmdblub), "sh \"%s\"", script_path);
+        system(cmdblub);
     #endif 
     return 0;
 }
