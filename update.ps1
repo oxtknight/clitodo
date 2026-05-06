@@ -9,7 +9,7 @@ Write-Host "Updating source via Git..." -ForegroundColor Cyan
 git pull origin main
 
 Write-Host "Re-compiling..." -ForegroundColor Cyan
-gcc souce.code/clitodo.c -lm -o clitodo.exe
+gcc source.code/clitodo.c -lm -o clitodo.exe
 if ($LASTEXITCODE -eq 0){
     Write-Host "Installing update..." -ForegroundColor Green 
     $currentExe = (Get-Command clitodo.exe).Source
