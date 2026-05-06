@@ -47,7 +47,7 @@ sudo make install
 
 2. Clone and Compile:
    ``` 
-   mkdir "$HOME\.clitodo\repo -Force
+   mkdir $HOME\.clitodo\repo -Force
    git clone https://github.com/oxtknight/clitodo.git "$HOME\.clitodo\repo"
    cd "$HOME\.clitodo\repo"
    gcc source.code/clitodo.c -o clitodo.exe
